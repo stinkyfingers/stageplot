@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  pre_build:
+    commands:
+      - yarn
+  build:
+    commands:
+      - yarn build
+  post_build:
+    commands:
+      - aws s3 sync build s3://stageplot.john-shenk.com
+      - aws cloudfront create-invalidation --paths /index.html --distribution-id E1EI9XT0NS5UG8
+artifacts:
+  files:
+    - 'build/*'
+
