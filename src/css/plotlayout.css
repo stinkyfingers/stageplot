@@ -1,0 +1,14 @@
+img.icon {
+    width: 50px;
+}
+img.iconAbsolute {
+    width: 50px;
+    position: absolute;
+}
+div.stage {
+    margin: auto;
+    display: block;
+    height: 60vh;
+    width: 90%;
+    background-color: #fff;
+}
