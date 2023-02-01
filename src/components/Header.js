@@ -10,12 +10,14 @@ const Header = () => {
   const [user] = React.useContext(UserContext);
   const loginButton = () => user ? <Logout /> : <Login />
   return <div className='header'>
-    <div className='title'>
-      <h1>StagePlot</h1>
+    <h1>StagePlot</h1>
+    <div className='login'>
+      { loginButton() }
+      { user && <div className='user'>{user.name}</div> }
     </div>
-    { loginButton() }
-    { user && <div className='welcome'>Welcome, {user.name}</div> }
-    <Menu />
+    <div className='nav'>
+      <Menu />
+    </div>
   </div>
 };
 

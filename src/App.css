@@ -1,5 +1,35 @@
 .App {
   text-align: center;
-  background-color: #eee;
+  --background-color: #eee;
+  --white: #fff;
+  --primary: #444;
+  --secondary: #fa0;
+  background-color: var(--background-color);
+  height: 100%;
 }
 
+button {
+  border: none;
+  border-radius: 4px;
+  color: var(--primary);
+  background-color: var(--secondary);
+  padding: .4em;
+}
+button:hover{
+  cursor: pointer;
+  opacity: .6;
+}
+button.cancel {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+input {
+  /*border: none;*/
+  border-style: solid;
+  border-radius: 4px;
+  padding: .4em;
+}
+svg.delete:hover, svg.add:hover {
+  cursor: pointer;
+  opacity: .4;
+}

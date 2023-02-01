@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
+import '../css/stage_plots.css';
+
 const CreateStagePlot = ({ onUpdate, stagePlot, setStagePlot }) => {
 	const [user] = React.useContext(UserContext);
 	const [, setErr] = React.useContext(ErrorContext);
@@ -35,11 +37,15 @@ const CreateStagePlot = ({ onUpdate, stagePlot, setStagePlot }) => {
 				})
 				.catch(setErr);
 		}
-	}
+	};
+	const handleCancel = () => {
+		setStagePlot(null);
+	};
 	return (
 		<div className='createBand'>
 			<input type='text' onChange={handleChange} placeholder='Stage Plot Name' defaultValue={stagePlot.name} />
 			<button onClick={handleClick}>Save</button>
+			<button onClick={handleCancel} className='cancel'>Cancel</button>
 		</div>
 	);
 };
@@ -50,7 +56,7 @@ const StagePlots = () => {
 	const [, setErr] = React.useContext(ErrorContext);
 
 	const [stagePlots, setStagePlots] = React.useState([]);
-	const [stagePlot, setStagePlot] = React.useState([]);
+	const [stagePlot, setStagePlot] = React.useState();
 	const [refresh, setRefresh] = React.useState(true);
 	
 	React.useEffect(() => {
@@ -66,10 +72,10 @@ const StagePlots = () => {
 	}, [setStagePlots, setErr, user.token]);
 
 	const renderStagePlots = () => (
-		<ul>{ stagePlots.map((stagePlot) => (
+		<ul className='stagePlots'>{ stagePlots.map((stagePlot) => (
 			<li key={stagePlot.id}>
 				<Link to={`/stageplot/${stagePlot.id}`}>{stagePlot.name}</Link>
-				<FontAwesomeIcon icon={faPencil} onClick={() => setStagePlot(stagePlot)} />
+				<FontAwesomeIcon icon={faPencil} onClick={() => setStagePlot(stagePlot)} className='edit' />
 			</li>
 		)) }
 		</ul>

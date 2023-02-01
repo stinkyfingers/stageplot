@@ -1,0 +1,9 @@
+div.menu>a {
+    color: var(--primary);
+    display: block;
+    text-decoration: none;
+}
+
+div.menu>a:hover {
+    opacity: .6;
+}

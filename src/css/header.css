@@ -1,3 +1,16 @@
-div.title>h1 {
+div.header>h1 {
     margin: 0;
+    display: inline;
+}
+div.user {
+    font-size: .4em;
+}
+div.login {
+    display: inline;
+    float:right;
+    padding: 1em;
+}
+div.nav {
+    display: inline;
+    float:left;
 }

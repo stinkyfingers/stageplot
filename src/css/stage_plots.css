@@ -1,0 +1,15 @@
+ul.stagePlots {
+    list-style: none;
+}
+ul.stagePlots>li>a {
+    text-decoration: none;
+    color: var(--primary);
+    padding: .4em;
+}
+ul.stagePlots>li>a:hover {
+    opacity: .4;
+}
+svg.edit:hover {
+    opacity: .4;
+    cursor: pointer;
+}

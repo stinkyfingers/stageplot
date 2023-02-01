@@ -1,0 +1,9 @@
+input.channel {
+    width: 4em;
+}
+tr.topHeader>th {
+    font-weight: 100;
+}
+div.monitorList {
+    background-color: var(--white);
+}

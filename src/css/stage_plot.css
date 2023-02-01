@@ -1,0 +1,44 @@
+div.public {
+    padding: .4em;
+}
+div.buttons>button {
+    margin: 1em;
+}
+div.printableStagePlot>h3 {
+    text-align: center;
+}
+div.printableStagePlot {
+    width: 90%;
+    margin: auto;
+}
+div.hidden {
+    display: none;
+}
+
+@media print {
+    div.printableStagePlot {
+        color: #111;
+        margin: auto;
+    }
+    .pallette {
+        display: none;
+    }
+    div.stage {
+        border: 1px solid #999;
+    }
+    div.add,.delete {
+        display: none;
+    }
+    div.monitors,input {
+        font-size: .8em;
+    }
+    .page-break {
+        margin-top: 1rem;
+        display: block;
+        page-break-before: always;
+    }
+    div.hr {
+        border: solid #999 1px;
+        margin: 1rem 0;
+    }
+}

@@ -1,0 +1,14 @@
+input.channel {
+    width: 4em;
+}
+div.inputList {
+    background-color: var(--white);
+}
+div.add {
+    display: inline-block;
+    left: 0
+}
+div.add>span {
+    padding: .4em;
+    font-weight: 100;
+}

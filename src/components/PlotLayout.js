@@ -7,18 +7,6 @@ import '../css/plotlayout.css';
 const iconMap = {
 	'elecguit': elecguit,
 	'elecbass': elecbass
-}
-
-const Pallette = () => {
-	const handleDragStart = (e) => {
-		e.dataTransfer.setData('icon', e.target.id);
-	};
-	return (
-		<div className='icons'>
-				<img id='elecguit' className='icon' src={ elecguit } alt='electric guitar' draggable='true' onDragStart={handleDragStart} />
-				<img id='elecbass' className='icon' src={ elecbass } alt='electric bass' draggable='true' onDragStart={handleDragStart} />
-		</div>
-	)
 };
 
 const PlotLayout = ({ stagePlot, handleLayout }) => {
@@ -64,8 +52,7 @@ const PlotLayout = ({ stagePlot, handleLayout }) => {
 		e.preventDefault();
 		e.stopPropagation();
 	};
-	
-	// TODO handle moving existing
+
 	const renderIcons = () => {
 		if (!stagePlot.icons) return;
 		return stagePlot.icons.map((icon, i) => {
@@ -94,7 +81,6 @@ const PlotLayout = ({ stagePlot, handleLayout }) => {
 		<div>
 			<div className='stage' ref={stageRef} onDrop={handleDrop} onDragOver={handleDragOver}></div>
 			{ renderIcons() }
-      <Pallette />
     </div>
 	);
 };
