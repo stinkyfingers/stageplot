@@ -5,6 +5,7 @@ import Home from './components/Home';
 import StagePlots from './components/StagePlots';
 import StagePlot from './components/StagePlot';
 import Users from './components/Users';
+import ViewOnly from './components/ViewOnly';
 import { ErrorContext, UserContext } from './lib/Context';
 import './App.css';
 
@@ -18,8 +19,9 @@ const App = ()  => {
 
   const routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/:id', element: <ViewOnly /> },
     { path: '/stageplots', element: <StagePlots /> },
-    { path: '/stageplot/:id', element: <StagePlot /> },
+    { path: '/edit/:id', element: <StagePlot /> },
     { path: '/users', element: <Users /> },
   ]);
 

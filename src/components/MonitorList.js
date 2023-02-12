@@ -34,7 +34,7 @@ const MonitorList = ({ stagePlot, handleMonitorList }) => {
 	
 	const handleMonitorLevel = (e, monitorLevel, monitorIndex, levelIndex) => {
 		const value = parseInt(e.target.value, 10);
-		if (value.isNan()) return;
+		if (isNaN(value)) return;
 		stagePlot.monitorList[monitorIndex].monitorLevels[levelIndex] = { inputChannel: monitorLevel.inputChannel, level: value};
 		handleMonitorList(stagePlot.monitorList);
 	};
@@ -52,7 +52,7 @@ const MonitorList = ({ stagePlot, handleMonitorList }) => {
 					</td>
 					{ stagePlot.inputList.map((input, j) => {
 						const monitorLevels = monitor.monitorLevels || [];
-						const monitorLevel = monitorLevels.find((level) => level.inputChannel === input.channel) || ({ inputChannel: input.channel, level: 0 });
+						const monitorLevel = monitorLevels.find((level) => level && level.inputChannel === input.channel) || ({ inputChannel: input.channel, level: 0 });
 						return (
 							<td key={`${input.name}-${j}`}>
 								<input className='channel' type={'number'} min='0' max='100' step='5' value={monitorLevel.level} onChange={(e) => handleMonitorLevel(e, monitorLevel, i, j)} />

@@ -1,8 +1,5 @@
 import React from 'react';
-import elecguit from '../icons/elecguitar.png';
-import elecbass from '../icons/elecbass.png';
-
-
+import iconMap from '../lib/Icons'
 
 const Pallette = () => {
   const handleDragStart = (e) => {
@@ -10,8 +7,17 @@ const Pallette = () => {
   };
   return (
     <div className='pallette'>
-      <img id='elecguit' className='icon' src={ elecguit } alt='electric guitar' draggable='true' onDragStart={handleDragStart} />
-      <img id='elecbass' className='icon' src={ elecbass } alt='electric bass' draggable='true' onDragStart={handleDragStart} />
+      { Object.keys(iconMap).map((key) => (
+        <img
+          id={key}
+          key={key}
+          className='icon'
+          style={{ height: iconMap[key].height, width: 'auto'}}
+          src={ iconMap[key].img }
+          alt={key} draggable='true'
+          onDragStart={handleDragStart}
+        />
+      ))}
     </div>
   )
 };

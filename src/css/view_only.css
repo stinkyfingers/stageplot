@@ -1,0 +1,84 @@
+div.viewInputList {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-basis: 40%;
+}
+div.viewInput {
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    padding: 1em;
+}
+
+span.inputChannel, span.inputName {
+    margin: .4em;
+}
+
+span.inputChannel {
+    color: var(--secondary);
+}
+
+div.viewMonitorList {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-basis: 40%;
+}
+div.viewMonitor {
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    padding: 1em;
+}
+
+span.monitorChannel, span.monitorName {
+    margin: .4em;
+}
+
+div.viewMonitorLevel {
+    text-align: left;
+    min-width: 15em;
+}
+
+span.monitorChannel {
+    color: var(--secondary);
+}
+
+span.monitorLevelInputLevel, span.monitorLevelChannel {
+    display: inline-block;
+    margin: .2em;
+}
+
+span.monitorLevelInputLevel {
+    width: 70%;
+    color: var(--secondary);
+}
+
+span.monitorLevelChannel {
+    width: 20%;
+}
+
+button.printButton {
+    display: none; /* TODO enable when printing renders more nicely - icons don't print when position:absolute */ 
+}
+
+@media print {
+    div.printableStagePlot {
+        color: #111;
+        margin: auto;
+    }
+    div.stage {
+        border: 1px solid #999;
+    }
+    div.monitors,input {
+        font-size: .8em;
+    }
+    .page-break {
+        margin-top: 1rem;
+        display: block;
+        page-break-before: always;
+    }
+    div.hr {
+        border: solid #999 1px;
+        margin: 1rem 0;
+    }
+}

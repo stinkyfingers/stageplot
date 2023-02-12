@@ -1,6 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useReactToPrint } from 'react-to-print';
+import { Link, useParams } from 'react-router-dom';
 import { getStagePlot, updateStagePlot } from '../lib/Api';
 import { ErrorContext, UserContext } from '../lib/Context';
 import PlotLayout from './PlotLayout';
@@ -14,7 +13,14 @@ const StagePlot = () => {
   const [, setErr] = React.useContext(ErrorContext);
   const { id } = useParams();
   const [stagePlot, setStagePlot] = React.useState();
-  const plotLayoutRef = React.useRef();
+  const [canEdit, setCanEdit] = React.useState(false);
+  
+  React.useEffect(() => {
+    if (!user || !stagePlot) return;
+    const id = user.stagePlotIds.find((id) => id === stagePlot.id)
+    if (id) setCanEdit(true);
+  }, [user, stagePlot]);
+  
   React.useEffect(() => {
     getStagePlot(user.token, id)
       .then((res) => {
@@ -54,17 +60,12 @@ const StagePlot = () => {
   const handleMonitorList = (monitorList) => {
     setStagePlot((current) => ({ ...current, monitorList }))
   }
-  
-  const handlePrint = useReactToPrint({
-    content: () => plotLayoutRef.current,
-    documentTitle: stagePlot?.name || 'Stage Plot',
-  })
-  
+
+  if (!canEdit) return <div>Cannot edit this Stage Plot as user {user.email}</div>
   if (!stagePlot) return <div>Loading...</div>;
-  
 	return (
 		<div className='stagePlot'>
-      <div ref={plotLayoutRef} className='printableStagePlot'>
+      <div className='printableStagePlot'>
         <h3>{stagePlot.name}</h3>
         <PlotLayout stagePlot={stagePlot} handleLayout={handleLayout} />
         <Pallette />
@@ -81,7 +82,7 @@ const StagePlot = () => {
         </div>
       <div className='buttons'>
         <button onClick={handleClick}>Save</button>
-        <button onClick={handlePrint}>Print</button>
+        <Link to={`/${stagePlot.id}`}>View/Print</Link>
       </div>
     </div>
 	);

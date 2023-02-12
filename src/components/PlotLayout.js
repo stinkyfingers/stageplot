@@ -1,13 +1,20 @@
 import React from 'react';
-import elecguit from '../icons/elecguitar.png';
-import elecbass from '../icons/elecbass.png';
+import iconMap from '../lib/Icons';
+// import elecguit from '../icons/elecguitar.png';
+// import elecbass from '../icons/elecbass.png';
+// import drums from '../icons/drums.png';
+// import mic from '../icons/mic.png';
+// import micboom from '../icons/micboom.png';
 
 import '../css/plotlayout.css';
 
-const iconMap = {
-	'elecguit': elecguit,
-	'elecbass': elecbass
-};
+// const iconMap = {
+// 	'elecguit': elecguit,
+// 	'elecbass': elecbass,
+// 	'drums': drums,
+// 	'mic': mic,
+// 	'micboom': micboom
+// };
 
 const PlotLayout = ({ stagePlot, handleLayout }) => {
 	const [stage, setStage] = React.useState({});
@@ -55,7 +62,7 @@ const PlotLayout = ({ stagePlot, handleLayout }) => {
 
 	const renderIcons = () => {
 		if (!stagePlot.icons) return;
-		return stagePlot.icons.map((icon, i) => {
+		return stagePlot.icons.filter((icon) => (icon.name)).map((icon, i) => {
 			const left = icon.position[0] + stage.left;
 			const top = icon.position[1] + stage.top;
 			return (
@@ -64,12 +71,14 @@ const PlotLayout = ({ stagePlot, handleLayout }) => {
 					data-position={icon.position}
 					id={icon.name}
 					className='iconAbsolute'
-					src={ iconMap[icon.name] }
+					src={ iconMap[icon.name].img }
 					alt={icon.name}
 					draggable='true'
 					style={{
 						top: `${top}px`,
-						left: `${left}px`
+						left: `${left}px`,
+						height:  iconMap[icon.name].height, 
+						width: 'auto'
 					}}
 					onDragStart={handleDragStart}
 				/>

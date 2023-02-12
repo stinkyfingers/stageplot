@@ -3,7 +3,7 @@ import { createStagePlot, listStagePlots, updateStagePlot } from '../lib/Api';
 import { ErrorContext, UserContext } from '../lib/Context';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import '../css/stage_plots.css';
 
@@ -74,8 +74,9 @@ const StagePlots = () => {
 	const renderStagePlots = () => (
 		<ul className='stagePlots'>{ stagePlots.map((stagePlot) => (
 			<li key={stagePlot.id}>
-				<Link to={`/stageplot/${stagePlot.id}`}>{stagePlot.name}</Link>
+				<Link to={`/edit/${stagePlot.id}`}>{stagePlot.name}</Link>
 				<FontAwesomeIcon icon={faPencil} onClick={() => setStagePlot(stagePlot)} className='edit' />
+				<Link to={`/${stagePlot.id}`}><FontAwesomeIcon icon={faEye} className='view'/></Link>
 			</li>
 		)) }
 		</ul>

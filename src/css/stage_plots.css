@@ -9,7 +9,7 @@ ul.stagePlots>li>a {
 ul.stagePlots>li>a:hover {
     opacity: .4;
 }
-svg.edit:hover {
+svg.edit:hover,svg.view:hover {
     opacity: .4;
     cursor: pointer;
 }
